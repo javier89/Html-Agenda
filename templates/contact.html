@@ -1,0 +1,41 @@
+<!-- Header -->
+<div class="view_header">
+    <h1>Contact</h1>
+    <a href="" class="btn_list btn_title" ng-click="goList()" title="Go to contact list"><i class="fas fa-list fa-2x"></i></a>
+</div>
+
+<!-- Form -->
+<form action="" name="form_contact" id="form_contact" ng-cloak>
+    <div class="form-group">
+        <input type="text" placeholder="Nombre" name="last_name" maxlength="36" ng-model="contact.last_name" required>
+        <p ng-show="form_contact.last_name.$error.required && form_contact.last_name.$touched" class="error-block">Nombre es un campo requerido</p>
+    </div>
+    <div class="form-group">
+        <input type="text" placeholder="Apellidos" name="first_name" maxlength="72" ng-model="contact.first_name" required>
+        <p ng-show="form_contact.first_name.$error.required && form_contact.first_name.$touched" class="error-block">Apellido es un campo requerido</p>
+    </div>
+    <div class="form-group">
+        <input type="text" placeholder="Correo" name="email" maxlength="100" ng-model="contact.email" required>
+        <p ng-show="form_contact.email.$error.required && form_contact.email.$touched" class="error-block">Email es un campo requerido</p>
+        <p ng-show="form_contact.email.$error.email && form_contact.email.$touched" class="error-block">Email incorrecto</p>
+    </div>
+    <div class="form-group">
+        <input type="text" placeholder="Telefono" name="phoneNumber" maxlength="10" ng-model="contact.phoneNumber" required>
+        <p ng-show="form_contact.phoneNumber.$error.required && form_contact.phoneNumber.$touched" class="error-block">Telefono es un campo requerido</p>
+    </div>
+    <div class="styled-select">
+        <select name="contry" ng-mmodel="contact.country" required>
+            <option value="" disabled selected>Seleccionar Pais</option>
+            <option ng-repeat="code in countries.getCodes()" value="{{code}}">{{countries.getName(code)}}</option>
+        </select>
+    </div>
+    <p ng-show="form_contact.country.$error.required && form_contact.country.&touched" class="error-block">Pais requerido</p>
+    <!-- 
+        * Button bar
+    -->
+    <div class="button_bar">
+        <button name="btn_add" ng-click="add()" ng-show="new && form_contact.$valid" title="Guardar cliente"> Guardar <i class="far fa-save"></i></button>
+        <button name="btn_edit" ng-click="update()" ng-show="!new && form_contact.$valid" title="Editar cliente">Editar <i class="fas fa-user-edit"></i></button>
+        <button name="btn_delete" ng-click="delete()" ng-show="!new" title="Eliminar cliente">Eliminar <i class="far fa-trash-alt"></i></button>
+    </div>
+</form>

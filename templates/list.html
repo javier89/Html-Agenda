@@ -1,0 +1,34 @@
+<div class="view_header">
+    <h1>List</h1>
+    <a ng-click="goForm('add')" class="btn_plus btn_title" title="Create new contact"><i class="fas fa-address-book fa-2x"></i></a>
+</div>
+
+<!-- 
+    * list of contacts
+ -->
+<div class="list_wrapper">
+    <ul>
+        <li ng-repeat="contact in contacts" list_ready_directive="layoutDone()">
+            <div class="contact_data">
+                {{contact.first_name}} {{contact.last_name}} - {{contact.phoneNumber}}
+            </div>
+            <div class="contact_email">
+                <a ng-click="goForm(contact.id)" title="Edit Contact"><i class="fas fa-user-edit btn_edit"></i></a>
+                <a href="{{contact.email}}" title="send email to contact"><i class="far fa-envelope fa-2x btn_mail"></i></a>
+            </div>
+        </li>
+    </ul>
+</div>
+
+
+<!-- 
+    * Button bar
+ -->
+<div class="button_bar scroll_bar">
+<a href="" class="btn_down" title="Scroll down" ng-mousedown="btn_scroll_down(2)" ng-mouseup="btn_scroll_up()">
+        <i class="fas  fa-chevron-circle-down fa-2x btn_scroll"></i>
+    </a>
+    <a href="" class="btn_up" title="Scroll up">
+        <i class="fas fa-chevron-circle-up fa-2x btn_scroll" ng-mousedown="btn_scroll_down(-2)" ng-mouseupd=btn_scroll_up()></i>
+    </a>
+</div>
